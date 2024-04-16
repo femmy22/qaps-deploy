@@ -1,0 +1,7 @@
+gunicorn==20.0.4
+Flask>=2.2.2
+flask_cors
+numpy
+matplotlib
+mysql-connector-python
+Werkzeug==2.2.2

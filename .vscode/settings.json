@@ -1,0 +1,17 @@
+{
+	"sqltools.connections": [
+		{
+			"mysqlOptions": {
+				"authProtocol": "default"
+			},
+			"previewLimit": 50,
+			"server": "cmsc508.com",
+			"port": 3306,
+			"driver": "MySQL",
+			"database": "22FA_team32",
+			"username": "shieldsn",
+			"password": "V01000930",
+			"name": "sem project"
+		}
+	]
+}
