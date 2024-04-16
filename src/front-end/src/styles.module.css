@@ -1,0 +1,46 @@
+.testingTemplate {
+	display: flex;
+	height: 100vh;
+	width: 100%;
+	touch-action: none;
+}
+
+.testModel {
+	outline: black solid;
+}
+
+.postionAbsolute {
+	position: absolute;
+}
+
+.button {
+	padding: 15px 25px;
+	text-align: center;
+	cursor: pointer;
+	color: #fff;
+	background-color: rgb(30, 101, 255);
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 9px #999;
+	text-decoration: none;
+	font-style: oblique;
+	font-size: 1em;
+	min-width: 20%;
+}
+
+.button:hover {
+	cursor: pointer;
+	background-color: deepskyblue;
+}
+
+.button:active {
+	background-color: steelblue;
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
+}
+
+a,
+button, h1 {
+	font-family: 'Arial', cursive;
+}
+

@@ -1,0 +1,115 @@
+table {
+	display: table;
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: inherit;
+	background-color: white;
+}
+
+td,
+th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 1em;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+
+.withTable {
+	display: flex;
+	flex-direction: row;
+	padding: 3%;
+	justify-content: space-around;
+	width: 100%;
+}
+
+.withoutTable {
+	display: flex;
+	flex-direction: column;
+	padding: 5%;
+	justify-content: center;
+}
+
+.formElements {
+	margin-top: 3%;
+	margin-bottom: 3%;
+}
+
+.limitX {
+	width: 95vw;
+}
+.limitY {
+	max-height: 70vh;
+	overflow-y: auto;
+}
+
+.link {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 15px 25px;
+	text-align: center;
+	cursor: pointer;
+	outline: none;
+	color: #fff;
+	background-color: dodgerblue;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 9px #999;
+	text-decoration: none;
+	font-style: oblique;
+	font-size: 1em;
+	min-width: 20%;
+}
+
+.link:hover {
+	background-color: deepskyblue;
+	cursor: pointer;
+}
+
+.link:active {
+	background-color: steelblue;
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
+}
+
+.search {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 15px 25px;
+	text-align: center;
+	cursor: pointer;
+	outline: none;
+	color: #fff;
+	background-color: green;
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 9px #999;
+	text-decoration: none;
+	font-style: oblique;
+	font-size: 1em;
+	min-width: 20%;
+}
+
+.search:hover {
+	background-color: limegreen;
+	cursor: pointer;
+}
+
+.search:active {
+	background-color: darkgreen;
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
+}
+
+.clickableRecord:hover {
+	background-color: lightblue;
+	cursor: pointer;
+}
+
+.clickableRecord:active {
+	background-color: cyan;
+}

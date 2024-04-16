@@ -1,0 +1,39 @@
+.credentials {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.inputField {
+	margin-bottom: 2%;
+}
+
+.login {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 15px 25px;
+	text-align: center;
+	cursor: pointer;
+	outline: none;
+	color: #fff;
+	background-color: rgb(128, 0, 85);
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 9px #999999;
+	text-decoration: none;
+	font-size: 2em;
+}
+
+.login:hover {
+	background-color: rgb(205, 50, 143);
+	cursor: pointer;
+}
+
+.login:active {
+	background-color: rgb(100, 0, 83);
+	box-shadow: 0 5px #666666;
+	transform: translateY(4px);
+}
+
