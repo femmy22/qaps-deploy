@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.c24b4db6.css",
-    "main.js": "/static/js/main.d19147df.js",
-    "index.html": "/index.html",
-    "main.c24b4db6.css.map": "/static/css/main.c24b4db6.css.map",
-    "main.d19147df.js.map": "/static/js/main.d19147df.js.map"
+    "main.css": "/qaps-deploy/static/css/main.c24b4db6.css",
+    "main.js": "/qaps-deploy/static/js/main.d19147df.js",
+    "index.html": "/qaps-deploy/index.html",
+    "main.c24b4db6.css.map": "/qaps-deploy/static/css/main.c24b4db6.css.map",
+    "main.d19147df.js.map": "/qaps-deploy/static/js/main.d19147df.js.map"
   },
   "entrypoints": [
     "static/css/main.c24b4db6.css",
