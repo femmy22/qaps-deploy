@@ -33,7 +33,8 @@ def login():
     # If valid credentials found: generate access token and add to JWT manager
     if username in users and users[username] == password:
         access_token = create_access_token(identity=username)
-        return {'token': access_token}, 200    
+        return {'token': access_token}, 200   
+     
     else:
         return 'Bad login', 401
 
