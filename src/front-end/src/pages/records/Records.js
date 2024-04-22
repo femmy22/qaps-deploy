@@ -43,8 +43,8 @@ function Records(props) {
 		const token = sessionStorage.getItem('Security Token');
 
 		// Sending POST request to URL
-		const URL = 'http://localhost:5000/get-data';
-		// 	const URL = 'http://3.238.55.170:5000/get-data';  // AWS server
+		//const URL = 'http://localhost:5000/get-data';
+			const URL = 'http://ec2-18-215-156-148.compute-1.amazonaws.com/api/get-data';  // AWS server
 
 		fetch(URL, {
 			method: 'POST',

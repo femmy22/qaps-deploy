@@ -5,8 +5,8 @@
 export function calculate(testSessionId) {
 	const testSessionData = { session: testSessionId };
 	const token = sessionStorage.getItem('Security Token');
-	const URL = 'http://localhost:5000/calculate';
-	// 	const URL = 'http://3.238.55.170:5000/calculate';  // AWS server
+	//const URL = 'http://localhost:5000/calculate';
+		const URL = 'http://ec2-18-215-156-148.compute-1.amazonaws.com/api/calculate';  // AWS server
 	fetch(URL, {
 		method: 'POST',
 		headers: {
@@ -25,8 +25,8 @@ export function calculate(testSessionId) {
 export async function newData(shapeData) {
 	const token = sessionStorage.getItem('Security Token');
 	// Sending POST request to URL
-	const URL = 'http://localhost:5000/new-data';
-	// 	const URL = 'http://3.238.55.170:5000/new-data;  // AWS server
+	//const URL = 'http://localhost:5000/new-data';
+	 	const URL = 'http://ec2-18-215-156-148.compute-1.amazonaws.com/api/new-data';  // AWS server
 
 	// Send shape data to back-end. Wait to make sure nothing went wrong
 	// Makes sure the component that calls this function is informed of any errors
