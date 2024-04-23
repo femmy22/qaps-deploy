@@ -23,7 +23,7 @@ function RecordTable(props) {
 		const token = sessionStorage.getItem('Security Token');
 		// Sending POST request to URL
 		//const URL = 'http://localhost:5000/get-data';
-			const URL = 'http://ec2-18-215-156-148.compute-1.amazonaws.com/api/get-data';  // AWS server
+			const URL = 'http://ec2-34-224-180-254.compute-1.amazonaws.com/api/get-data';  // AWS server
 
 		// Ask back-end for raw data based on the shape and session ID
 		const response = await fetch(URL, {

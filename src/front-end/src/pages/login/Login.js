@@ -24,7 +24,7 @@ function Login() {
 		};
 
 		//  const URL = 'http://localhost:5000/login';
-		const URL = 'http://ec2-18-215-156-148.compute-1.amazonaws.com/api/login';  // AWS server
+		const URL = 'http://ec2-34-224-180-254.compute-1.amazonaws.com/api/login';  // AWS server
 		fetch(URL, {
 			method: 'POST',
 			body: JSON.stringify(loginCredentials),
