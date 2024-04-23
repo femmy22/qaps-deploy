@@ -24,10 +24,13 @@ const [showFirstButton, setShowFirstButton] = useState(true);
         setShowSecondButton(false);
     }
     const buttonStyle = {
-        padding: '10px', 
-        fontSize: '16px', 
+        padding: '5px 10px', 
+        fontSize: '14px', 
         textAlign: 'center', 
         boxSizing: 'border-box',
+        position: 'absolute',
+        top: '10px',
+        width: '100%'
 
     };
 
