@@ -14,7 +14,7 @@ function Circle() {
     const testSession = useContext(TestSession);
     const dominantHand = useContext(LeftHanded);
     const shapeRef = useRef(); // Referring to the actual JSX canvas tag
-const [showFirstButton, setShowFirstButton] = useState(true);
+    const [showFirstButton, setShowFirstButton] = useState(true);
     const [showSecondButton, setShowSecondButton] = useState(false);
 
     const handleFirstButtonClick = () => {
@@ -117,8 +117,7 @@ const [showFirstButton, setShowFirstButton] = useState(true);
     } else {
         return (
             <div className={classes.testingTemplate}>
-                <canvas className={classes.testModel} ref={shapeRef} />
-{showFirstButton && (
+             {showFirstButton && (
                     <button style={buttonStyle} onClick={handleFirstButtonClick}>
                         Draw the Shape
                     </button>
@@ -128,7 +127,7 @@ const [showFirstButton, setShowFirstButton] = useState(true);
                         Hit R to restart
                     </button>
                 )}
-
+               <canvas className={classes.testModel} ref={shapeRef} />
                 {testSession.testSessionId ? (
                     <Canvas onSubmit={onsubmitCircleHandler} />
                 ) : null}

@@ -12,7 +12,35 @@ function TripleLine() {
 	const testSession = useContext(TestSession);
 	const dominantHand = useContext(LeftHanded);
 	const shapeRef = useRef(); // Referring to the actual JSX canvas tag
+	const [showFirstButton, setShowFirstButton] = useState(true);
+    const [showSecondButton, setShowSecondButton] = useState(false);
 
+    const handleFirstButtonClick = () => {
+        setShowFirstButton(false);
+    }
+    const handleScndButtonClick = () => {
+        setShowSecondButton(false);
+    }
+    const buttonStyle = {
+        padding: '5px 10px', 
+        fontSize: '14px', 
+        textAlign: 'center', 
+        boxSizing: 'border-box',
+        position: 'absolute',
+        top: '10px',
+        width: '60%'
+
+    };
+
+    useEffect(() => {
+        const timer1 = setTimeout(() => setShowFirstButton(true), 1000); 
+        const timer2 = setTimeout(() => setShowSecondButton(true), 5000); 
+        // Clear the timers when the component unmounts
+        return () => {
+            clearTimeout(timer1);
+            clearTimeout(timer2);
+        };
+    }, []);
 	// Submit drawing data to be stored into the back-end
 	async function onsubmitTripleLineHandler(drawingData) {
 		// Adds the test type to the drawing data
@@ -74,6 +102,18 @@ function TripleLine() {
 	if (dominantHand.leftHanded) {
 		return (
 			<div className={classes.testingTemplate}>
+				{showFirstButton && (
+                    <button style={buttonStyle}>
+                        Draw the Shape
+                    </button>
+                )}
+                {showSecondButton && (
+                    <button
+                        style={buttonStyle}
+                    >
+                        Hit R or Enter
+                    </button>
+                )}
 				{testSession.testSessionId ? (
 					<Canvas onSubmit={onsubmitTripleLineHandler} />
 				) : null}
@@ -83,6 +123,18 @@ function TripleLine() {
 	} else {
 		return (
 			<div className={classes.testingTemplate}>
+				{showFirstButton && (
+                    <button style={buttonStyle}>
+                        Draw the Shape
+                    </button>
+                )}
+                {showSecondButton && (
+                    <button
+                        style={buttonStyle}
+                    >
+                        Hit R or Enter
+                    </button>
+                )}
 				<canvas className={classes.testModel} ref={shapeRef} />
 				{testSession.testSessionId ? (
 					<Canvas onSubmit={onsubmitTripleLineHandler} />
