@@ -1,6 +1,6 @@
 // Component associated with the mini vertical lines test.
 
-import { useEffect, useRef, useContext } from 'react';
+import { useEffect, useRef, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TestSession, LeftHanded } from '../../App';
 import Canvas from '../../components/Canvas';
