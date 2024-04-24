@@ -287,10 +287,11 @@ def generate_pdf():
         return response, 200
     elif request.method == 'POST':
         session_id = request.json.get('session_id')
-        host = "cmsc508.com"
-        database = "22FA_team32"
-        user = "shieldsn"
-        password = "V01000930"
+        host = "aws-test-1.c5wcy2ag81s4.us-east-2.rds.amazonaws.com"
+        database = "23fa_test"
+        user = "admin"
+        password = 'Capstone24'
+        port = "3306"
         
         try:
             subprocess.run(['python', 'downloadpdf.py', session_id])
@@ -319,10 +320,11 @@ def testCompleted():
     
     # Call generate_pdf_report function from your script
     # Replace 'host', 'database', 'user', and 'password' with actual database credentials
-    host = "cmsc508.com"
-    database = "22FA_team32"
-    user = "shieldsn"
-    password = "V01000930"
+    host = "aws-test-1.c5wcy2ag81s4.us-east-2.rds.amazonaws.com"
+    database = "23fa_test"
+    user = "admin"
+    password = 'Capstone24'
+    port = "3306"
     pdf_link = generate_pdf_report(session_id, host, database, user, password)  # Generate PDF report and get the link
     
     

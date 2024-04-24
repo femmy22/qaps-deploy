@@ -50,7 +50,7 @@ function Records(props) {
 			} 
 			else {
 				//const URL = 'http://localhost:5000/difference';
-				const URL = 'http://ec2-34-224-180-254.compute-1.amazonaws.com/api/new-data';  // AWS server
+				const URL = 'http://ec2-34-224-180-254.compute-1.amazonaws.com/api/difference';  // AWS server
 				fetch(URL, {
 					method: 'POST',
 					headers: {
