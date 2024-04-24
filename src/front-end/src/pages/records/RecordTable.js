@@ -23,7 +23,7 @@ function RecordTable(props) {
 		const token = sessionStorage.getItem('Security Token');
 		// Sending POST request to URL
 		//const URL = 'http://localhost:5000/get-data';
-			const URL = 'http://ec2-34-224-180-254.compute-1.amazonaws.com/api/get-data';  // AWS server
+		const URL = 'http://ec2-34-224-180-254.compute-1.amazonaws.com/api/new-data';  // AWS server
 
 		// Ask back-end for raw data based on the shape and session ID
 		const response = await fetch(URL, {
@@ -428,6 +428,51 @@ function RecordTable(props) {
 				</div>
 			);
 		}
+		else if (data.table === 'difference') {
+			// difference table display
+			return (
+				<div>
+					<div className={classes.limitY}>
+						<div className={classes.limitX}>
+							<table>
+								<thead>
+									<tr>
+										<th className={classes.clickableRecord} onClick={() => sortByHeader('Session ID')}>Session ID</th>
+										<th className={classes.clickableRecord} onClick={() => sortByHeader('Total Score Z Score')}>Total Score Z Score</th>
+										<th className={classes.clickableRecord} onClick={() => sortByHeader('Z Score Straightness')}>Z Score Straightness</th>
+										<th className={classes.clickableRecord} onClick={() => sortByHeader('Z Score Equilaterality')}>Z Score Equilaterality</th>
+										<th className={classes.clickableRecord} onClick={() => sortByHeader('Z Score Alignment')}>Z Score Alignment</th>
+										<th className={classes.clickableRecord} onClick={() => sortByHeader('Z Score Roundness')}>Z Score Roundness</th>
+										<th className={classes.clickableRecord} onClick={() => sortByHeader('Z Score Closure')}>Z Score Closure</th>
+										<th className={classes.clickableRecord} onClick={() => sortByHeader('Z Score Spacing')}>Z Score Spacing</th>
+										<th className={classes.clickableRecord} onClick={() => sortByHeader('Z Score Line Ratio')}>Z Score Line Ratio</th>
+										<th className={classes.clickableRecord} onClick={() => sortByHeader('Z Score Bisection')}>Z Score Bisection</th>
+										<th className={classes.clickableRecord} onClick={() => sortByHeader('Z Score Bisection Angle')}>Z Score Bisection Angle</th>
+									</tr>
+								</thead>
+								<tbody>
+									{data.records?.map((row, i) => (
+										<tr key={i}>
+											<td>{row[0]}</td>
+											<td>{(row[10] * 1).toFixed(2)}</td>
+											<td>{(row[1] * 1).toFixed(2)}</td>
+											<td>{(row[2] * 1).toFixed(2)}</td>
+											<td>{(row[3] * 1).toFixed(2)}</td>
+											<td>{(row[4] * 1).toFixed(2)}</td>
+											<td>{(row[5] * 1).toFixed(2)}</td>
+											<td>{(row[6] * 1).toFixed(2)}</td>
+											<td>{(row[7] * 1).toFixed(2)}</td>
+											<td>{(row[8] * 1).toFixed(2)}</td>
+											<td>{(row[9] * 1).toFixed(2)}</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			);
+		}
 		return;
 	} else {
 		setTimeout(() => {
@@ -435,5 +480,6 @@ function RecordTable(props) {
 		}, 3000);
 		return noRecords;
 	}
+	
 }
 export default RecordTable;

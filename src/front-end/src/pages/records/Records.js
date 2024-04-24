@@ -15,7 +15,7 @@ function Records(props) {
 	const storage = useContext(RecordStorage);
 	const [tableRender, updateTableRender] = useState(false);
 	const [dataDisplay, updateDataDisplay] = useState();
-	const tableOptions = ['score', 'test', 'rawData', 'measurement']; // All tables that we want to allow access to
+	const tableOptions = ['score', 'test', 'rawData', 'measurement', 'difference']; // All tables that we want to allow access to
 	const defaultTable = tableOptions[0];
 
 	// Updates the record table component that goes in this component based off the selected column header based off how it was sorted
@@ -32,51 +32,130 @@ function Records(props) {
 		if (enteredTable === undefined) {
 			enteredTable = tableInputRef.current.props.value;
 		}
-
 		let enteredSessionId = sessionIdInputRef.current.value;
 
 		const dataBaseQuery = {
-			table: enteredTable,
-			shape: 'Any',
-			session: enteredSessionId,
+		table: enteredTable,
+		shape: 'Any',
+		session: enteredSessionId,
 		};
 		const token = sessionStorage.getItem('Security Token');
+		const testSessionData = {session: enteredSessionId };
 
-		// Sending POST request to URL
-		//const URL = 'http://localhost:5000/get-data';
-			const URL = 'http://ec2-34-224-180-254.compute-1.amazonaws.com/api/get-data';  // AWS server
+		if (enteredTable === 'difference') {
+			if (!enteredSessionId) {
+				// You can add validation here to require a session ID when 'difference' is selected
+				alert('Session ID is required for the "difference" table.');
+				return;
+			} 
+			else {
+				//const URL = 'http://localhost:5000/difference';
+				const URL = 'http://ec2-34-224-180-254.compute-1.amazonaws.com/api/new-data';  // AWS server
+				fetch(URL, {
+					method: 'POST',
+					headers: {
+						Accept: 'application/json',
+						'Content-Type': 'application/json',
+						Authorization: `Bearer ${token}`,
+					},
+					body: JSON.stringify(testSessionData),
+				})
+				.then((response) => response.json())
+				.then((data) => {
+					data.table = enteredTable;
 
-		fetch(URL, {
-			method: 'POST',
-			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json',
-				Authorization: `Bearer ${token}`,
-			},
-			body: JSON.stringify(dataBaseQuery),
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				data.table = enteredTable;
-				// Removing -1s from table; changing them to 0s
-				for (let i = 0; i < data.length; i++) {
-					for (let j = 1; j < data[i].length; j++) {
-						if (data[i][j] < 0) {
-							data[i][j] = 0;
-							if (data.table === 'score') data[i][10] += 1;
+					const dataObject = {
+						table: data.table,
+						records: data,
+					};
+					props.storeRecords(dataObject);
+					updateDataDisplay(dataObject);
+					updateTableRender(true);
+				});
+			}
+			
+		} else {
+			// Sending POST request to URL
+			//const URL = 'http://localhost:5000/get-data';
+			const URL = 'http://ec2-34-224-180-254.compute-1.amazonaws.com/api/new-data';  // AWS server
+	
+			fetch(URL, {
+				method: 'POST',
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${token}`,
+				},
+				body: JSON.stringify(dataBaseQuery),
+			})
+				.then((response) => response.json())
+				.then((data) => {
+					data.table = enteredTable;
+					// Removing -1s from table; changing them to 0s
+					for (let i = 0; i < data.length; i++) {
+						for (let j = 1; j < data[i].length; j++) {
+							if (data[i][j] < 0) {
+								data[i][j] = 0;
+								if (data.table === 'score') data[i][10] += 1;
+							}
 						}
 					}
-				}
-
-				const dataObject = {
-					table: data.table,
-					records: data,
-				};
-				props.storeRecords(dataObject);
-				updateDataDisplay(dataObject);
-				updateTableRender(true);
-			});
+	
+					const dataObject = {
+						table: data.table,
+						records: data,
+					};
+					props.storeRecords(dataObject);
+					updateDataDisplay(dataObject);
+					updateTableRender(true);
+				});
+		}
 	}
+
+	// 	let enteredSessionId = sessionIdInputRef.current.value;
+
+	// 	const dataBaseQuery = {
+	// 		table: enteredTable,
+	// 		shape: 'Any',
+	// 		session: enteredSessionId,
+	// 	};
+	// 	const token = sessionStorage.getItem('Security Token');
+
+	// 	// Sending POST request to URL
+	// 	const URL = 'http://localhost:5000/get-data';
+	// 	// 	const URL = 'http://3.238.55.170:5000/get-data';  // AWS server
+
+	// 	fetch(URL, {
+	// 		method: 'POST',
+	// 		headers: {
+	// 			Accept: 'application/json',
+	// 			'Content-Type': 'application/json',
+	// 			Authorization: `Bearer ${token}`,
+	// 		},
+	// 		body: JSON.stringify(dataBaseQuery),
+	// 	})
+	// 		.then((response) => response.json())
+	// 		.then((data) => {
+	// 			data.table = enteredTable;
+	// 			// Removing -1s from table; changing them to 0s
+	// 			for (let i = 0; i < data.length; i++) {
+	// 				for (let j = 1; j < data[i].length; j++) {
+	// 					if (data[i][j] < 0) {
+	// 						data[i][j] = 0;
+	// 						if (data.table === 'score') data[i][10] += 1;
+	// 					}
+	// 				}
+	// 			}
+
+	// 			const dataObject = {
+	// 				table: data.table,
+	// 				records: data,
+	// 			};
+	// 			props.storeRecords(dataObject);
+	// 			updateDataDisplay(dataObject);
+	// 			updateTableRender(true);
+	// 		});
+	// }
 
 	// Display previously searched table if not first time searching in the current session.
 	useEffect(() => {
@@ -149,7 +228,6 @@ function Records(props) {
 						/>
 					</div>
 					<button className={classes.search}>Search Data</button>
-					<h1>Use the dropdown to select from several options on how you want to search data.</h1>
 				</form>
 			)}
 
