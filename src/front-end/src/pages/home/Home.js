@@ -34,8 +34,8 @@ function Home(props) {
                         Welcome to our Prewriting App! <br />
                         Would you like a tour?
                         <div className={classes.button}>
-                            <a href='http://www.qapsapp.com/new-evaluation' className={`${classes.btn} ${classes.btnYes}`}>YES</a>
-                            <button className={classes.btnNo} onClick={togglePopup}NO></button>
+                            <a href='http://www.qapsapp.com/new-evaluation' className={`${classes.btn} ${classes.btnYes}`}>Yes</a>
+                            <button className={classes.btnNo} onClick={togglePopup}>No</button>
                         </div>
                     </h1>
                 )}

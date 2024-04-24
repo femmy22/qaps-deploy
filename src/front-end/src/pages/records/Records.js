@@ -77,7 +77,7 @@ function Records(props) {
 		} else {
 			// Sending POST request to URL
 			//const URL = 'http://localhost:5000/get-data';
-			const URL = 'http://ec2-34-224-180-254.compute-1.amazonaws.com/api/new-data';  // AWS server
+			const URL = 'http://ec2-34-224-180-254.compute-1.amazonaws.com/api/get-data';  // AWS server
 	
 			fetch(URL, {
 				method: 'POST',
