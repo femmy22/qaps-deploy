@@ -204,7 +204,18 @@ class connection(MySQLConnection):
         
         cursor = self.cursor()
         cursor.callproc('calculate_scores', [inputs])
-        self.commit() 
+        self.commit()
+        
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+    # Param: receives a procedure and a list of inputs
+    # Returns: executes a procedure on the given input parameter list
+    # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+    def meanproc(self, parameters):
+        procedure = parameters["procedure"]
+        inputs = parameters["inputs"]
+        cursor = self.cursor()
+        cursor.callproc('calculate_difference', [inputs])
+        self.commit()
 
 
 

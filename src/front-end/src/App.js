@@ -18,9 +18,9 @@ import MiniVerticalLines from './pages/evaluations/MiniVerticalLines';
 import UnsymmetricalLines from './pages/evaluations/UnsymmetricalLines';
 import PlusSign from './pages/evaluations/PlusSign';
 import Triangle from './pages/evaluations/Triangle';
-import Report from './pages/report/Report';
+// import Report from './pages/report/Report';
+import TestCompleted from './pages/pdf-generation/testCompleted';
 import Redraw from './pages/evaluations/Redraw';
-
 
 // Contexts allow for values to be shared between different components
 export const TestSession = createContext(); // Stores the test session ID
@@ -109,8 +109,8 @@ function App() {
 							></Route>
 							{/* <Route path="/report" element={<Report />}></Route> */}
 							<Route
-								path="/report/report"
-								element={<Report />}
+								path="/new-evaluation/TestCompleted"
+								element={<TestCompleted />}
 							></Route>
 						</Routes>
 					</LeftHanded.Provider>
