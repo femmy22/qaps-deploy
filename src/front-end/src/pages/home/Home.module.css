@@ -32,17 +32,23 @@
 	text-decoration: none;
 	font-style: oblique;
 	font-size: 4vw;
+	margin-top: 110px;
+
+	/* filter: blur(5px);
+	transition: filter 2s; */
+	
 }
 
 .link:hover {
 	background-color: rgba(255, 0, 179, 0.648);
 	cursor: pointer;
+	/* filter: blur(0); */
 }
 
 .link:active {
 	background-color: rgb(180, 70, 129);
 	box-shadow: 0 2px #666;
-	transform: translateY(5px);
+	/* transform: translateY(5px); */
 }
 
 .button {
@@ -91,6 +97,7 @@
 	text-decoration: none;
 	font-style: oblique;
 	font-size: 4vw;
+	margin-bottom: 45xpx;
 }
 
 .logout:hover {
@@ -102,4 +109,83 @@
 	background-color: darkred;
 	box-shadow: 0 2px #666;
 	transform: translateY(5px);
+}
+
+
+.popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    background-color: rgb(176, 18, 129);
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    width: 80%;
+    height: 16%;
+    text-decoration: none;
+    font-family: 'Arial', cursive;
+    font-weight: lighter;
+    font-size: 3.5vw;
+    margin-left: 100px;
+    margin-top: 15px;
+    position: fixed;
+    margin-bottom: 50px;
+    animation-name: slideLeft;
+    animation-duration: 5s;
+}
+
+@keyframes slideLeft {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row; /* Aligns buttons side by side */
+}
+
+.btnYes, .btnNo {
+    flex: 1; /* Ensures both buttons take up equal space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 5px 8px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: rgba(255, 30, 131, 0.826);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    text-decoration: none;
+    font-style: oblique;
+    font-size: 2vw;
+    margin: 0 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btnYes:hover, .btnNo:hover {
+    background-color: rgba(255, 0, 157, 0.76);
+}
+
+.btnYes:active, .btnNo:active {
+    background-color: darkred;
+    box-shadow: 0 2px #666;
+    transform: translateY(5px);
+}
+
+.btnYes, .btnNo {
+    transition: background-color 0.3s ease;
+}
+
+.popup, .link, .logout {
+    font-family: 'Arial', italic;
 }
