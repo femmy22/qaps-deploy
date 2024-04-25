@@ -213,7 +213,7 @@ from downloadpdf import generate_pdf_report
 
 app = Flask(__name__)
 CORS(app)
-# CORS(app, resources={r"/generate_pdf_report": {"origins": ["http://localhost:3000"]}})
+CORS(app, resources={r"/api/generate_pdf_report": {"origins": ["http://qapsapp.com"]}})
 app.config['JWT_SECRET_KEY'] = 'secret-key'
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=4)
 jwt = JWTManager(app)
