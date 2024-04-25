@@ -20,7 +20,9 @@ import PlusSign from './pages/evaluations/PlusSign';
 import Triangle from './pages/evaluations/Triangle';
 // import Report from './pages/report/Report';
 import TestCompleted from './pages/pdf-generation/testCompleted';
+import ReportSearch from './pages/home/ReportSearch';
 import Redraw from './pages/evaluations/Redraw';
+import DataContext, { MyProvider } from './DataContext';
 
 // Contexts allow for values to be shared between different components
 export const TestSession = createContext(); // Stores the test session ID
@@ -32,6 +34,7 @@ function App() {
 	const [testSessionId, updateTestSessionId] = useState('');
 	const [records, updateRecordsStored] = useState(undefined);
 	const [leftHanded, updateDominantHand] = useState(false);
+	const [data, setData] = useState(`data`);
 
 	// Sets the current state of the child to be the entered name
 	function onNameChangeHandler(sessionId) {
@@ -49,74 +52,81 @@ function App() {
 	}
 
 	return (
-		<Overlay>
-			<TestSession.Provider value={{ testSessionId }}>
-				<RecordStorage.Provider value={{ records }}>
-					<LeftHanded.Provider value={{ leftHanded }}>
-						<Routes>
-							<Route path="/login" element={<Login />}></Route>
-							<Route
-								path="/"
-								element={<Home onNameChange={onNameChangeHandler} />}
-							></Route>
-							<Route
-								path="/records"
-								element={<Records storeRecords={storeRecordsHandler} />}
-							></Route>
-							<Route path="/redraw" element={<Redraw />}></Route>
-							<Route
-								path="/new-evaluation"
-								element={
-									<Instructions
-										onNameChange={onNameChangeHandler}
-										onHandChange={updateDominantHandHandler}
-									/>
-								}
-							></Route>
-							<Route path="/new-evaluation/circle" element={<Circle />}></Route>
-							<Route
-								path="/new-evaluation/double-line"
-								element={<DoubleLine />}
-							></Route>
-							<Route
-								path="/new-evaluation/triple-line"
-								element={<TripleLine />}
-							></Route>
-							<Route path="/new-evaluation/square" element={<Square />}></Route>
-							<Route
-								path="/new-evaluation/single-line"
-								element={<SingleLine />}
-							></Route>
-							<Route
-								path="/new-evaluation/vertical-line"
-								element={<VerticalLine />}
-							></Route>
-							<Route
-								path="/new-evaluation/mini-vertical-lines"
-								element={<MiniVerticalLines />}
-							></Route>
-							<Route
-								path="/new-evaluation/unsymmetrical-lines"
-								element={<UnsymmetricalLines />}
-							></Route>
-							<Route
-								path="/new-evaluation/plus-sign"
-								element={<PlusSign />}
-							></Route>
-							<Route
-								path="/new-evaluation/triangle"
-								element={<Triangle />}
-							></Route>
-							{/* <Route path="/report" element={<Report />}></Route> */}
-							<Route
-								path="/new-evaluation/TestCompleted"
-								element={<TestCompleted />}
-							></Route>
-						</Routes>
-					</LeftHanded.Provider>
-				</RecordStorage.Provider>
-			</TestSession.Provider>
-		</Overlay>
+		<DataContext.Provider value={{data, setData}}>
+			<Overlay>
+				<TestSession.Provider value={{ testSessionId }}>
+					<RecordStorage.Provider value={{ records }}>
+						<LeftHanded.Provider value={{ leftHanded }}>
+							<Routes>
+								<Route path="/login" element={<Login />}></Route>
+								<Route
+									path="/"
+									element={<Home onNameChange={onNameChangeHandler} />}
+								></Route>
+								<Route
+									path="/records"
+									element={<Records storeRecords={storeRecordsHandler} />}
+								></Route>
+								<Route path="/redraw" element={<Redraw />}></Route>
+								<Route
+									path="/new-evaluation"
+									element={
+										<Instructions
+											onNameChange={onNameChangeHandler}
+											onHandChange={updateDominantHandHandler}
+										/>
+									}
+								></Route>
+								<Route path="/new-evaluation/circle" element={<Circle />}></Route>
+								<Route
+									path="/new-evaluation/double-line"
+									element={<DoubleLine />}
+								></Route>
+								<Route
+									path="/new-evaluation/triple-line"
+									element={<TripleLine />}
+								></Route>
+								<Route path="/new-evaluation/square" element={<Square />}></Route>
+								<Route
+									path="/new-evaluation/single-line"
+									element={<SingleLine />}
+								></Route>
+								<Route
+									path="/new-evaluation/vertical-line"
+									element={<VerticalLine />}
+								></Route>
+								<Route
+									path="/new-evaluation/mini-vertical-lines"
+									element={<MiniVerticalLines />}
+								></Route>
+								<Route
+									path="/new-evaluation/unsymmetrical-lines"
+									element={<UnsymmetricalLines />}
+								></Route>
+								<Route
+									path="/new-evaluation/plus-sign"
+									element={<PlusSign />}
+								></Route>
+								<Route
+									path="/new-evaluation/triangle"
+									element={<Triangle />}
+								></Route>
+								{/* <Route path="/report" element={<Report />}></Route> */}
+								<Route
+									path="/new-evaluation/TestCompleted"
+									element={<TestCompleted />}
+								></Route>
+								<Route
+									path="/home/ReportSearch"
+									element={<ReportSearch />}
+								></Route>
+							</Routes>
+					
+						</LeftHanded.Provider>
+					</RecordStorage.Provider>
+				</TestSession.Provider>
+			</Overlay>
+		</DataContext.Provider>
 	);
 }
 

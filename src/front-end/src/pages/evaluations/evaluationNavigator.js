@@ -6,6 +6,7 @@ export function calculate(testSessionId) {
 	const testSessionData = { session: testSessionId };
 	const token = sessionStorage.getItem('Security Token');
 	const URL = 'http://ec2-34-224-180-254.compute-1.amazonaws.com/api/calculate';
+//	const URL = 'http://localhost:5000/calculate';
 	// 	const URL = 'http://3.238.55.170:5000/calculate';  // AWS server
 	fetch(URL, {
 		method: 'POST',
@@ -68,7 +69,7 @@ export async function newData(shapeData) {
 		case 'Plus Sign':
 			return '/new-evaluation/triangle';
 		case 'Triangle': // Make sure the last shape is the only one to calculate
-			// calculate(shapeData.session);
+			calculate(shapeData.session);
 			// return '/';
 		     return '/new-evaluation/TestCompleted';
 			// return '/new-evaluation/generate_pdf'
@@ -86,7 +87,7 @@ export async function newData(shapeData) {
 // export async function newData(shapeData) {
 //     const token = sessionStorage.getItem('Security Token');
 //     const URL = 'http://localhost:5000/new-data';
-    
+
 //     try {
 //         const response = await fetch(URL, {
 //             method: 'POST',

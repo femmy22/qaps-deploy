@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext  } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import classes from './TestCompleted.module.css';
+import DataContext from '../../DataContext';
 
 function TestCompleted() {
     const [sessionID, setSessionID] = useState('');
+    // const {data} = useContext(DataContext);
     // const navigate = useNavigate();
 
     const handleDownloadPdf = async () => {
         try {
+            // const response = await fetch('http://localhost:5000/generate_pdf_report', {
             const response = await fetch('http://ec2-34-224-180-254.compute-1.amazonaws.com/api/generate_pdf_report', {
                 method: 'POST',
                 headers: {
@@ -16,11 +19,12 @@ function TestCompleted() {
                 body: JSON.stringify({ session_id: sessionID }),
             });
             if (response.ok) {
+
                 const blob = await response.blob();
                 const url = window.URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = 'report.pdf';
+                a.download = sessionID +"_session.pdf";
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
@@ -38,6 +42,7 @@ function TestCompleted() {
     const handleSessionIDChange = (event) => {
         setSessionID(event.target.value);
     };
+
 
     return (
         <div className="testCompleted">
