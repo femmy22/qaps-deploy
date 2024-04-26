@@ -45,6 +45,11 @@ function TestCompleted() {
 
 
     return (
+        <div className={classes.reportSearch}>
+			<Modal>
+				<Link className={classes.homepage} to="/">
+					<p>Return to Homepage</p>
+				</Link>
         <div className="testCompleted">
             <h1>Test Completed</h1>
             <p>Thank you for completing the prewriting test!</p>
@@ -58,6 +63,8 @@ function TestCompleted() {
                 <Link className={classes.link} onClick={handleDownloadPdf}>Download PDF Report</Link>
             </p>
         </div>
+        </Modal>
+    </div>
     );
 }
 

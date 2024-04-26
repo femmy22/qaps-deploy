@@ -8,6 +8,35 @@
 	margin-bottom: 10em;
 }
 
+.homepage{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	cursor: pointer;
+	outline: none;
+	color: #fff;
+	background-color: rgba(255, 30, 131, 0.826);
+	border: none;
+	border-radius: 15px;
+	box-shadow: 0 9px #999;
+	width: 25%;
+	text-decoration: none;
+	font-family: 'Arial', cursive;
+	font-size: 0.8em;
+}
+
+.homepage:hover {
+	background-color: rgba(255, 0, 179, 0.648);
+	cursor: pointer;
+}
+
+.homepage:active {
+	background-color: rgb(180, 70, 129);
+	box-shadow: 0 2px #666;
+	transform: translateY(5px);
+}
+
 .selection {
 	display: flex;
 	justify-content: space-evenly;

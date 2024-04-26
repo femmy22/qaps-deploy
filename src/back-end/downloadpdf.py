@@ -36,7 +36,7 @@ def generate_pdf_report(session_id, host, database, user, password, port):
             cursor = connection.cursor()
 
             # Fetch data for the provided session ID and all other session IDs
-            query = "SELECT sessionID, score FROM norm"
+            query = "SELECT sessionID, score FROM score"
             cursor.execute(query)
             combined_data = pd.DataFrame(cursor.fetchall(), columns=['sessionID', 'score'])
 
@@ -160,5 +160,5 @@ if __name__ == "__main__":
     session_id = sys.argv[1]
 
     # Generate PDF report
-    generate_pdf_report(session_id, host, database, user, password)
+    generate_pdf_report(session_id, host, database, user, password, port)
 

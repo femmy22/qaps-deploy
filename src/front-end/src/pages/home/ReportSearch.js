@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Modal from '../../components/modal/Modal';
 import classes from './ReportSearch.module.css';
 
 
@@ -11,7 +12,7 @@ function ReportSearch() {
     const handleDownloadPdf = async () => {
         try {
             // const response = await fetch('http://localhost:5000/generate_pdf_report', {
-               const response = await fetch('http://ec2-34-224-180-254.compute-1.amazonaws.com/api/generate_pdf_report', {
+            const response = await fetch('http://ec2-34-224-180-254.compute-1.amazonaws.com/api/generate_pdf_report', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -42,6 +43,11 @@ function ReportSearch() {
     };
 
     return (
+        <div className={classes.reportSearch}>
+			<Modal>
+				<Link className={classes.button} to="/">
+					<p>Return to Homepage</p>
+				</Link>
         <div className="reportSearch">
             <h1>Search for reports</h1>
         
@@ -55,6 +61,8 @@ function ReportSearch() {
                 <Link className={classes.link} onClick={handleDownloadPdf}>Download PDF Report</Link>
             </p>
         </div>
+        </Modal>
+    </div>
     );
 }
 
