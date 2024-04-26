@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext  } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import classes from './TestCompleted.module.css';
+import Modal from '../../components/modal/Modal';
 import DataContext from '../../DataContext';
 
 function TestCompleted() {
