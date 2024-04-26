@@ -19,14 +19,15 @@ def sanitize_session_id(session_id):
     return sanitized_session_id
 
 # Function to generate PDF report based on session IDs
-def generate_pdf_report(session_id, host, database, user, password):
+def generate_pdf_report(session_id, host, database, user, password, port):
     # Connect to the database
     try:
         connection = mysql.connector.connect(
             host=host,
             database=database,
             user=user,
-            password=password
+            password=password,
+            port=port
         )
         if connection.is_connected():
             print("Connected to MySQL database")
